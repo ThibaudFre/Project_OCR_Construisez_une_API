@@ -1,12 +1,12 @@
 import express from 'express';
 import bodyParser from "body-parser"
 import mongoose from 'mongoose';
-import { router as userRoutes } from './routes/user.routes';
+import { router as userRoutes } from './routes/user.routes.js';
 
 
- export const app = express();
+export const app = express();
 
-//conection toi MongodB !!!!!!!!!!!! mot de passe en .env avec librairie .env
+//conection to MongodB !!!!!!!!!!!! mot de passe en .env avec librairie .env
 mongoose.connect('mongodb+srv://tioutaoa:Funaruto64!BdognomB@cluster0.r1tzvsw.mongodb.net/?retryWrites=true&w=majority',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
@@ -21,8 +21,8 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(bodyParser.json());
 app.use("/api/auth", userRoutes);
 
-app.use(bodyParser.json());
 
 

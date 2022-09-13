@@ -1,6 +1,6 @@
 import express from "express";
 export const router = express.Router();
-import * as userCtrl from "../controllers/user.controller";
+import {signUp, logIn} from "../controllers/user.controller.js";
 
-router.post("/api/auth/signup", userCtrl.signUp);
-router.post("/api/auth/login", userCtrl.logIn);
+router.post("/signup", signUp);
+router.post("/login", logIn);
