@@ -1,6 +1,9 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import User from "../models/User.model.js";
+import dotenv from 'dotenv';
+
+dotenv.config()
 
 export const signUp = (req, res) => {
     bcrypt.hash(req.body.password, 10)
@@ -27,12 +30,13 @@ export const logIn = (req, res) => {
                     if (!valid) {
                         res.status(401).json({ message: "Paire identifiant / Mot de passe incorrecte" })
                     }
+                    console.log("utilisateur connecté")
                     res.status(200).json({
                         UserId: user._id,
                         token: jwt.sign(
                             { userId: user._id },
-                            "M07d3P4553",
-                            {expiresIn: "24h"}
+                            process.env.MPTOKEN,
+                            { expiresIn: "24h" }
                         )
                     })
                 })
