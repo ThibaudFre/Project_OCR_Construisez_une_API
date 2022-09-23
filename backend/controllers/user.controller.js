@@ -1,7 +1,7 @@
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-import User from "../models/User.model.js";
-import dotenv from 'dotenv';
+import bcrypt from "bcrypt"
+import jwt from "jsonwebtoken"
+import User from "../models/User.model.js"
+import dotenv from 'dotenv'
 
 dotenv.config()
 
@@ -32,7 +32,7 @@ export const logIn = (req, res) => {
                     }
                     console.log("utilisateur connecté")
                     res.status(200).json({
-                        UserId: user._id,
+                        userId: user._id,
                         token: jwt.sign(
                             { userId: user._id },
                             process.env.MPTOKEN,
@@ -42,5 +42,5 @@ export const logIn = (req, res) => {
                 })
                 .catch(error => res.status(500).json({ error }))
         })
-        .catch(error => res.status(500).json({ error }));
+        .catch(error => res.status(500).json({ error }))
 }

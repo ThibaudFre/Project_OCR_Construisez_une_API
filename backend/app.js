@@ -14,8 +14,6 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 dotenv.config({ path:__dirname +'./../.env' })
 
-console.log("process.env :", process.env.ID)
-
 export const app = express();
 
 //conection to MongodB !!!!!!!!!!!! mot de passe en .env avec librairie .env
